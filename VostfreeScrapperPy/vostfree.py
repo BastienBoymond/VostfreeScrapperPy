@@ -142,3 +142,8 @@ class AnimePage:
 
         else:
             return id
+
+class SearchPage:
+    def __init__(self):
+        self.url = 'https://vostfree.tv'
+    
