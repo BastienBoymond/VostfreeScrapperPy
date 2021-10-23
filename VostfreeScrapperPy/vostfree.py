@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-
+import requests
 class AnimePage:
     def __init__(self):
         self.url = 'https://vostfree.tv'
@@ -8,7 +8,7 @@ class AnimePage:
         return BeautifulSoup(self.getHtml(url), 'html.parser')
 
     def getHtml(self, url):
-        import requests
+        
         return requests.get(url).text
 
     def getTitle(self, soup):
@@ -147,3 +147,54 @@ class SearchPage:
     def __init__(self):
         self.url = 'https://vostfree.tv'
     
+    def getSoup(self, url):
+        return BeautifulSoup(self.getHtml(url), 'html.parser')
+
+    def getHtml(self, url):
+        return requests.get(url).text
+    
+    def getAnimes(self, soup):
+        animes = []
+        for a in soup.find_all('div', {'class': 'search-result'}):
+            anime = {}
+            anime['title'] = a.find('div', {'class': 'title'}).text
+            anime['season'] = a.find_all('b')[0].text
+            anime['nbepisodes'] = a.find_all('b')[1].text
+            anime['image'] = self.url + a.find('img')['src']
+            anime['link'] = a.find('div', {'class': 'title'}).find('a')['href']
+            anime['language'] = a.find('div', {'class': 'quality'}).text
+            anime['description'] = a.find('div', {'class': 'desc'}).text
+            genre = []
+            for g in soup.find('li', {'class': 'type'}).find_all('a'):
+                genre.append(g.text)
+            anime['genre'] = genre
+            animes.append(anime)
+        return animes
+
+class Page:
+    def __init__(self):
+        self.url = 'https://vostfree.tv'
+    
+    def getSoup(self, url):
+        return BeautifulSoup(self.getHtml(url), 'html.parser')
+
+    def getHtml(self, url):
+        return requests.get(url).text
+
+    def getAnimes(self, soup):
+        animes = []
+        for a in soup.find_all('div', {'class': 'movie-poster'}):
+            anime = {}
+            anime['title'] = a.find('div', {'class': 'title'}).text
+            anime['season'] = a.find_all('b')[0].text
+            anime['nbepisodes'] = a.find_all('b')[1].text
+            anime['image'] = self.url + a.find('img')['src']
+            anime['link'] = a.find('a', {'class': 'fa fa-play link'})['href']
+            anime['language'] = a.find('div', {'class': 'quality'}).text
+            anime['description'] = a.find('div', {'class': 'desc'}).text
+            genre = []
+            for g in soup.find_all('li', {'class': 'type'})[1].find_all('a'):
+                genre.append(g.text)
+            anime['genre'] = genre
+            animes.append(anime)
+        return animes
