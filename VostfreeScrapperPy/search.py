@@ -1,4 +1,4 @@
-from vostfree import SearchPage
+from VostfreeScrapperPy.vostfree import SearchPage
 
 def getSearchTerm(SearchTerm):
     anime= {}

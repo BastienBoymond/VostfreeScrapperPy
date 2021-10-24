@@ -1,4 +1,4 @@
-from vostfree import Page
+from VostfreeScrapperPy.vostfree import Page
 
 def getLastNewsPage(page):
     anime= {}

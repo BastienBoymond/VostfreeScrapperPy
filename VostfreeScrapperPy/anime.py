@@ -1,4 +1,4 @@
-from vostfree import AnimePage
+from VostfreeScrapperPy.vostfree import AnimePage
 
 def getAnimeById(id):
     anime = {}
