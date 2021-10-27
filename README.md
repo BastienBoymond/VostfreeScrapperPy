@@ -2,7 +2,7 @@
     <h1>VostfreeScrapperPy</h1>
 
 [![Pypi](https://img.shields.io/pypi/dm/VostfreeScrapperPy?label=Download&color=brightgreen&logo=python&style=for-the-badge)](https://pypi.org/project/VostfreeScrapperPy/)
-[![Pypi](https://img.shields.io/pypi/v/VostfreeScrapperPy?label=Download&color=brightgreen&logo=python&style=for-the-badge)](https://pypi.org/project/VostfreeScrapperPy/)
+[![Pypi](https://img.shields.io/pypi/v/VostfreeScrapperPy?label=Version&color=brightgreen&logo=python&style=for-the-badge)](https://pypi.org/project/VostfreeScrapperPy/)
     <br>
     <strong>Python Scrapper of <a href="https://vostfree.tv/">vostfree.tv</a> website</strong>
     <br>
